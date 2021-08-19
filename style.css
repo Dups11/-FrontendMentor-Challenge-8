@@ -58,7 +58,7 @@ p {
 .card-container {
     width: 540px;
     height: 398px;
-    padding: 46px;
+    padding: 46px 46px 33px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -75,10 +75,12 @@ p {
 
 .card-info {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex-grow: 1;
+    /* padding-bottom: 40px; */
 }
 
 .pricing, .frequency, .card-cta {
@@ -88,11 +90,72 @@ p {
     align-items: center;
 }
 
-.card-cta {
-    height: 90px;
-    /* border-top: 1px solid red; */
+.pricing p {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+}
+
+.price p {
+    font-size: 40px;
+    font-weight: 700;
+    color: hsl(227, 35%, 25%);
+    margin-right: 2px;
+    letter-spacing: -1px;
 
 }
+
+.price span {
+    color: hsl(225, 20%, 60%);
+    font-style: 16px;
+    font-weight: 600;
+
+}
+
+.frequency {
+    margin-left: 107px;
+    width: auto;
+    padding-bottom: 35px;
+    padding-right: 16px;
+}
+
+.frequency p {
+    font-size: 12px;
+    font-weight: 600;
+
+}
+
+.frequency span {
+    color: hsl(15, 100%, 70%);
+    background-color: hsl(14, 92%, 95%); 
+    font-size: 10px;
+    margin-left: 2px;    padding: 2px 6px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+
+.card-cta {
+    height: 103px;
+    /* border-top: 1px solid red; */
+    /* background: #000; */
+    justify-content: space-between;
+    align-items: flex-end;
+
+}
+
+/* .cta-facts {
+    align-self: flex-end;
+} */
 
 .line {
     position: relative;
@@ -105,16 +168,39 @@ p {
     position: relative;
     width: 43px;
     height: 21px;
-    border-radius: 10px;
+    /* border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 
-    background-color: hsl(223, 50%, 87%);
+    background-color: hsl(223, 50%, 87%); */
 }
 
-.toggle::after {
+
+.toggle label {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    
+    background-color: hsl(223, 50%, 87%);
+    /* background-color: aqua; */
+    /* visibility: hidden; */
+}
+
+.toggle input {
+    display: none;
+    position: relative;
+}
+
+
+#label::after {
     content: '';
     width: 14px;
     height: 14px;
@@ -125,16 +211,71 @@ p {
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-
     top: 3px;
     left: 3px;
+    transition: left 0.15s linear;
+    -webkit-transition: left 0.15s linear;
+    -moz-transition: left 0.15s linear;
+    -ms-transition: left 0.15s linear;
+    -o-transition: left 0.15s linear;
 }
 
-.slider {
+#billingToggle:checked ~ label {
+    background: hsl(174, 86%, 45%);
+}
+
+
+#billingToggle:checked ~ label::after {
+    position: absolute;
+    left: 26px;
+    
+}
+
+#label:hover {
+    cursor: pointer;
+    background-color: hsla(174, 86%, 45%, 0.604);
+}
+
+.slider-container {
     position: relative;
-    height: 12px;
-    width: 444px;
+    height: 40px;
+    margin-bottom: 6px;
+}
+
+.color-range {
+    position: absolute;
+    top: 9px;
+    content: '';
+    height: 8px;
+    
+    background-color: hsl(174, 86%, 45%);
+    border-radius: 8px 0 0 8px;
+    -webkit-border-radius: 8px 0 0 8px;
+    -moz-border-radius: 8px 0 0 8px;
+    -ms-border-radius: 8px 0 0 8px;
+    -o-border-radius: 8px 0 0 8px;
+}
+
+.range0 {
+    width: 0;
+}
+.range1 {
+    width: calc(25% - 10px);}
+.range2 {
+    width: calc(50% - 20px);}
+.range3 {
+    width: calc(75% - 30px);}
+.range4 {
+    width: calc(100% - 40px);}
+
+
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
     background-color: hsl(224, 65%, 95%);
+    outline: none;
     border-radius: 12px;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
@@ -142,27 +283,67 @@ p {
     -o-border-radius: 12px;
 }
 
-#slider {
-    position: absolute;
-    content: '';
+.slider::-webkit-slider-thumb {
+    position: relative;
+    -webkit-appearance: none;
+    appearance: none;
     width: 40px;
     height: 40px;
-    background-color: hsl(174, 86%, 45%);
     border-radius: 50%;
-    top: -15px;
-    left: 50%;
+    background: no-repeat center center url(./images/icon-slider.svg),
+            hsl(174, 86%, 45%);
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    cursor: pointer;
+    box-shadow: 1px 12px 25px hsla(174, 86%, 45%, 0.604);
+}
+
+.slider::-webkit-slider-thumb:hover {
+    background-color: hsla(174, 86%, 45%, 0.604);
+}
+
+.slider::-webkit-slider-thumb:active {
+    background-color: hsl(174, 89%, 29%);
+    cursor: grabbing;
+
+}
+
+.slider::-moz-range-thumb {
+    appearance: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    background: no-repeat center center url(./images/icon-slider.svg),            hsl(174, 86%, 45%);
+    cursor: pointer;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    box-shadow: 1px 12px 25px hsla(174, 86%, 45%, 0.604);
+}
+
+
+
+.slider.slider::-moz-range-thumb:active {
+    background-color: hsl(174, 89%, 29%);
+    cursor: -moz-grabbing;
+}
+
+.cta-facts p {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 25px;
+    
+}
+
+.cta-facts img {
+    margin-right: 16px;
 }
 
 .cta-btn {
     padding: 12px 46px;
     border-radius: 22px;
+    margin-bottom: 15px;
     -webkit-border-radius: 22px;
     -moz-border-radius: 22px;
     -ms-border-radius: 22px;
@@ -173,4 +354,7 @@ p {
     border: 0;
 }
 
-
+.cta-btn:hover {
+    cursor: pointer;
+    color: white;
+}

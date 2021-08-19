@@ -30,15 +30,21 @@
       <div class="card-info">
         <div class="pricing">
           <p id="page">100 Pageviews</p>
-          <p id="price">$16.00 /month</p>
+          <div class="price">
+            <p id="price">$16.00 </p><span>/ month</span>
+          </div>
         </div>
-        <div class="slider">
-          <div id="slider"><img src="./images/icon-slider.svg" alt=""></div>
+        <div class="slider-container">
+          <span class="color-range" id="color-range"></span>
+          <input type="range" min="0" max="4" step="1" value="2" class="slider" id="myRange" >
         </div>
         <div class="frequency">
           <p>Monthly Billing</p>
-          <div class="toggle" id="toggle"></div>
-          <p>Yearly Billing 25% discount</p>
+          <div class="toggle" id="toggle">
+            <input type="checkbox" name="billingToggle" id="billingToggle">
+            <label for="billingToggle" id="label"></label>
+          </div>
+          <p>Yearly Billing <span>25% discount</span></p>
         </div>
       </div>
       <div class="card-cta">
