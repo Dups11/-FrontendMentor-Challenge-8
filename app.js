@@ -22,7 +22,7 @@ range.oninput = function () {
     let colorRange = document.getElementById('color-range');
     colorRange.classList.remove('range1', 'range0', 'range2', 'range3', 'range4')
     colorRange.classList.add('range'+ [this.value]);
-    price.innerHTML = '$' +priceValue[this.value].toFixed(2);
+    price.innerHTML = '$' + priceValue[this.value].toFixed(2);
     page.innerHTML = pageViews[this.value] +" Pageviews"; 
 
 };
