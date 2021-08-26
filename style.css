@@ -362,7 +362,6 @@ p {
     -moz-border-radius: 22px;
     -ms-border-radius: 22px;
     -o-border-radius: 22px;
-    /* align-self: flex-end; */
     background-color: hsl(227, 35%, 25%);
     color: hsl(226, 100%, 87%);
     border: 0;
